@@ -1,14 +1,19 @@
 package com.example.demo;
 
+import java.util.List;
+import java.util.stream.StreamSupport;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * The PersonService class provides methods to interact with the
  * PersonRepository.
  */
 @Service
+@Log4j2
 @RequiredArgsConstructor
 public class PersonService {
 
@@ -29,17 +34,18 @@ public class PersonService {
      * 
      * @return An Iterable containing all persons in the repository.
      */
-    public Iterable<Person> getAll() {
-        return repository.findAll();
+    public List<Person> getAll() {
+        return StreamSupport.stream(repository.findAll().spliterator(), false).toList();
     }
 
     /**
      * Saves the specified person to the repository.
      * 
-     * @param person The person to save.
+     * @param people The person to save.
      */
-    public void save(Person person) {
-        repository.save(person);
+    public void save(Person people) {
+        log.debug("save person: {}", people);
+        repository.save(people);
     }
 
     /**
@@ -79,6 +85,10 @@ public class PersonService {
      */
     public Iterable<Person> getByAge(int age) {
         return repository.findByAge(age);
+    }
+
+    public void saveAll(List<Person> persons) {
+        repository.saveAll(persons);
     }
 
 }

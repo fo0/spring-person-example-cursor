@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Person Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #fff;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #4a5568;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2d3748;
+        }
+
+        a {
+            color: #fff;
+        }
+
+        button[type="submit"] {
+            background-color: #4a5568;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2d3748;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            background-color: #cbd5e0;
+            color: #1a202c;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            width: 100%;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4a5568;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="margin: 20px;">
+        <form th:action="@{/save}" th:object="${person}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+            <br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" th:field="*{age}" required>
+            <br>
+            <button type="submit">Create Person</button>
+        </form>
+    </div>
+
+    <div style="margin: 20px;">
+        <!-- Create a Thymeleaf table for displaying all people -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="person : ${people}">
+                    <td th:text="${person.id}"></td>
+                    <td th:text="${person.name}"></td>
+                    <td th:text="${person.age}"></td>
+                    <td><a th:href="@{/edit/{id}(id=${person.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${person.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+</html>

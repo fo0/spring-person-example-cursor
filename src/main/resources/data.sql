@@ -1,3 +1,4 @@
+/*
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (1, 19, 'Tom Smith', '246 Main St', 'tomsmith@example.com', '555-6789');
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (2, 20, 'Bob Johnson', '789 Elm St', 'bobjohnson@example.com', '555-9012');
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (3, 20, 'Lucy Kim', '789 Pine St', 'lucykim@example.com', '555-6789');
@@ -19,3 +20,5 @@ INSERT INTO person (id, age, name, address, email, phone_number) VALUES (18, 37,
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (19, 40, 'Isabella Davis', '789 Pine St', 'isabelladavis@example.com', '555-8901');
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (20, 42, 'Sarah Kim', '789 Oak Ave', 'sarahkim@example.com', '555-2345');
 INSERT INTO person (id, age, name, address, email, phone_number) VALUES (21, 50, 'Emily Davis', '123 Elm St', 'emilydavis@example.com', '555-0123');
+*/
+
